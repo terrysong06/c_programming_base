@@ -26,7 +26,10 @@
                     "c": "cd $dir && if [ -f makefile ] || [ -f Makefile ]; then make && TARGET=$(grep -m1 '^TARGET' makefile Makefile 2>/dev/null | head -1 | cut -d'=' -f2 | tr -d ' ') && ./$TARGET; else gcc $fileName -o $fileNameWithoutExt.o && ./$fileNameWithoutExt.o; fi"
                 },
                 // C++ 확장 프로그램이 Copilot과 잘 작동하도록 최적화
-                "C_Cpp.autocomplete": "enabled"
+                "C_Cpp.autocomplete": "default",
+                // clangd inlay hints 비활성화 (printf(format: "...") 같은 파라미터 이름 표시 제거)
+                "clangd.inlayHints.parameterNames": "none",
+                "clangd.inlayHints.enabled": "off"
             }
         }
     },
