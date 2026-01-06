@@ -1,0 +1,28 @@
+{
+    "name": "C Development (Copilot & GitFlow)",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "formulahendry.code-runner",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "GitHub.copilot", // GitHub Copilot 핵심
+                "GitHub.copilot-chat", // Copilot 채팅 (질문 답변용)
+                "vsc-gitflow.gitflow4vscode", // Git Flow UI 지원
+                "eamodio.gitlens" // 코드 작성자 및 히스토리 확인용 (강력 추천)
+            ],
+            "settings": {
+                // Code Runner 설정: 실행 시 터미널을 사용하도록 설정 (입력값 처리 가능)
+                "code-runner.runInTerminal": true,
+                "code-runner.saveFileBeforeRun": true,
+                // C++ 확장 프로그램이 Copilot과 잘 작동하도록 최적화
+                "C_Cpp.autocomplete": "enabled"
+            }
+        }
+    },
+    "remoteUser": "root"
+}
