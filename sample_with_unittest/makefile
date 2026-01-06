@@ -15,10 +15,9 @@ TARGET = sample.out
 PROG_SRCS = main.c sample.c
 PROG_OBJS = $(PROG_SRCS:.c=.o)
 
-# 테스트 소스 (test_sample.c + sample.c, main.c 제외)
-TEST_SRCS = test_sample.c sample.c
-TEST_OBJS = $(TEST_SRCS:.c=.o)
-TEST_TARGET = test_sample.out
+# 테스트 설정
+TEST_DIR = tests
+TEST_TARGET = $(TEST_DIR)/test_sample.out
 
 # 기본 타겟: 프로그램 빌드
 all: $(TARGET)
@@ -29,11 +28,11 @@ $(TARGET): $(PROG_OBJS)
 
 # 테스트 빌드 및 실행
 test: $(TEST_TARGET)
-	@echo "\n🚀 테스트 실행 중...\n"
+	@echo "\n🧪 Unity 테스트 실행 중...\n"
 	./$(TEST_TARGET)
 
 # 테스트 실행파일 빌드
-$(TEST_TARGET): $(TEST_OBJS)
+$(TEST_TARGET): $(TEST_DIR)/test_sample.c sample.c
 	$(CC) $(CFLAGS) -o $@ $^
 
 # 컴파일: 각 .c 파일을 .o로 컴파일
@@ -45,4 +44,3 @@ clean:
 	rm -f *.o $(TARGET) $(TEST_TARGET)
 
 .PHONY: all test clean
-

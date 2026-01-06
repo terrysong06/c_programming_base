@@ -28,4 +28,3 @@ int get_star_count(int row, int height) {
   }
   return 2 * row - 1; // 홀수 개: 1, 3, 5, 7, 9...
 }
-

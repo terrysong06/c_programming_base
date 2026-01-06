@@ -8,4 +8,3 @@ int main() {
   print_mountain(height);
   return 0;
 }
-

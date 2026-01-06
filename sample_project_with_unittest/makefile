@@ -2,7 +2,7 @@
 #
 # 사용법:
 #   make        - 프로그램 빌드
-#   make test   - 모든 테스트 실행
+#   make test   - 테스트 실행
 #   make clean  - 빌드 산출물 삭제
 
 CC = gcc
@@ -15,10 +15,9 @@ TARGET = calculator.out
 PROG_SRCS = main.c calc.c display.c
 PROG_OBJS = $(PROG_SRCS:.c=.o)
 
-# 테스트 소스
-TEST_CALC_SRCS = test_calc.c calc.c
-TEST_CALC_OBJS = $(TEST_CALC_SRCS:.c=.o)
-TEST_CALC_TARGET = test_calc.out
+# 테스트 설정
+TEST_DIR = tests
+TEST_CALC_TARGET = $(TEST_DIR)/test_calc.out
 
 # 기본 타겟: 프로그램 빌드
 all: $(TARGET)
@@ -28,16 +27,12 @@ $(TARGET): $(PROG_OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 # 모든 테스트 실행
-test: test_calc
-	@echo "\n✅ 모든 테스트 완료!\n"
-
-# calc 테스트 빌드 및 실행
-test_calc: $(TEST_CALC_TARGET)
-	@echo "\n🚀 calc 함수 테스트 실행 중...\n"
+test: $(TEST_CALC_TARGET)
+	@echo "\n🧪 Unity 테스트 실행 중...\n"
 	./$(TEST_CALC_TARGET)
 
-# 테스트 실행파일 빌드
-$(TEST_CALC_TARGET): $(TEST_CALC_OBJS)
+# calc 테스트 빌드
+$(TEST_CALC_TARGET): $(TEST_DIR)/test_calc.c calc.c
 	$(CC) $(CFLAGS) -o $@ $^
 
 # 컴파일: 각 .c 파일을 .o로 컴파일
@@ -46,7 +41,6 @@ $(TEST_CALC_TARGET): $(TEST_CALC_OBJS)
 
 # 정리
 clean:
-	rm -f *.o *.out
+	rm -f *.o $(TARGET) $(TEST_DIR)/*.out
 
-.PHONY: all test test_calc clean
-
+.PHONY: all test clean

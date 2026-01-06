@@ -11,4 +11,3 @@ void print_title(void);
 void print_result(const char *operation, int a, int b, int result);
 
 #endif
-

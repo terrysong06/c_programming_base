@@ -11,4 +11,3 @@ void print_mountain(int height);
 int get_star_count(int row, int height);
 
 #endif
-
