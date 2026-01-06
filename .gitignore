@@ -76,7 +76,4 @@ dkms.conf
 
 # End of https://www.toptal.com/developers/gitignore/api/c,visualstudiocode
 
-# Project specific
-vending_machine
-
 *.zip
